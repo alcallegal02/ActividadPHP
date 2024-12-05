@@ -1,6 +1,6 @@
 <?php
 define('USER', 'root');
-define('PASSWORD', 'root');
+define('PASSWORD', '');
 define('HOST', 'localhost');
 define('DATABASE', 'actphp');
 try {

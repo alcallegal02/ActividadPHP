@@ -1,59 +1,100 @@
-* {
-    padding: 0;
-    margin: 0;
-    box-sizing: border-box;
-}
+/* Estilos globales */
 body {
-    margin: 50px auto;
-    text-align: center;
-    width: 800px;
+    font-family: Arial, sans-serif;
+    background-color: #f9f9f9;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
 }
+
+/* Contenedor principal */
+.container {
+    background: #fff;
+    padding: 20px 30px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    max-width: 400px;
+    width: 100%;
+    text-align: center; /* Centra el contenido dentro del contenedor */
+    display: flex;
+    flex-direction: column; /* Distribuye los elementos en vertical */
+    align-items: center;
+}
+
+/* Encabezado */
 h1 {
-    font-family: 'Passion One';
-    font-size: 2rem;
-    text-transform: uppercase;
+    color: #333;
+    margin-bottom: 20px;
 }
-label {
-    width: 150px;
-    display: inline-block;
-    text-align: left;
-    font-size: 1.5rem;
-    font-family: 'Lato';
-}
-input {
-    border: 2px solid #ccc;
-    font-size: 1.5rem;
-    font-weight: 100;
-    font-family: 'Lato';
-    padding: 10px;
-}
+
+/* Estilo de los elementos del formulario */
 form {
-    margin: 25px auto;
-    padding: 20px;
-    border: 5px solid #ccc;
-    width: 500px;
-    background: #eee;
+    width: 100%; /* Asegura que el formulario ocupe el ancho del contenedor */
+    display: flex;
+    flex-direction: column; /* Alinea los elementos del formulario en vertical */
 }
-div.form-element {
-    margin: 20px 0;
+
+.form-element {
+    margin-bottom: 15px;
+    text-align: left;
+    width: 100%; /* Hace que cada campo ocupe el mismo ancho */
 }
-button {
+
+label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+    font-size: 14px;
+    color: #555;
+}
+
+input {
+    width: 100%;
     padding: 10px;
-    font-size: 1.5rem;
-    font-family: 'Lato';
-    font-weight: 100;
-    background: yellowgreen;
-    color: white;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 14px;
+    box-sizing: border-box;
+    transition: border-color 0.3s;
+}
+
+input:focus {
+    border-color: #007bff;
+    outline: none;
+}
+
+/* Botón */
+button {
+    width: 100%;
+    padding: 10px 15px;
     border: none;
+    border-radius: 5px;
+    background-color: #007bff;
+    color: #fff;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s;
 }
-p.success,
-p.error {
-    color: white;
-    font-family: lato;
-    background: yellowgreen;
-    display: inline-block;
-    padding: 2px 10px;
+
+button:hover {
+    background-color: #0056b3;
 }
-p.error {
-    background: orangered;
+
+/* Texto debajo del formulario */
+p {
+    margin-top: 15px;
+    font-size: 14px;
+    text-align: center;
+}
+
+a {
+    color: #007bff;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
 }

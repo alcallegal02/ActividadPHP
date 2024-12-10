@@ -1,6 +1,11 @@
 <?php
 session_start();  // Al principio de todo
 
+// Desactivar el caché del navegador
+header("Cache-Control: no-store, no-cache, must-revalidate, max-age=0");
+header("Cache-Control: post-check=0, pre-check=0", false);
+header("Pragma: no-cache");
+
 // Verificar si el usuario está autenticado
 if (!isset($_SESSION['user_id'])) {
     // Redirige al login si no está autenticado
@@ -36,20 +41,15 @@ $products = $query->fetchAll(PDO::FETCH_ASSOC);
 <head>
     <meta charset="UTF-8">
     <title>Lista de Productos</title>
+    <link rel="stylesheet" href="styles/styleproduct.css">
 </head>
 <body>
     <h1>Lista de Productos</h1>
-
-    <!-- Formulario para cerrar sesión -->
     <form method="POST" action="../../controller/forms/logout.php">
         <button type="submit">Cerrar sesión</button>
     </form>
-
-    <!-- Enlace para crear un nuevo producto -->
-    <a href="create_product.php">Crear Nuevo Producto</a>
-
-    <!-- Tabla de productos -->
-    <table border="1">
+    <a href="create_product.php" class="btn">Crear Nuevo Producto</a>
+    <table>
         <thead>
             <tr>
                 <th>ID</th>
@@ -70,10 +70,8 @@ $products = $query->fetchAll(PDO::FETCH_ASSOC);
                         <td><?php echo htmlspecialchars($product['price']); ?></td>
                         <td><?php echo htmlspecialchars($product['stock']); ?></td>
                         <td>
-                            <!-- Enlace de edición -->
-                            <a href="edit_product.php?id=<?php echo htmlspecialchars($product['id']); ?>">Editar</a> | 
-                            <!-- Enlace de eliminación con confirmación -->
-                            <a href="product_list.php?delete_id=<?php echo htmlspecialchars($product['id']); ?>" onclick="return confirm('¿Estás seguro de que quieres eliminar este producto?');">Eliminar</a>
+                            <a href="edit_product.php?id=<?php echo htmlspecialchars($product['id']); ?>" class="btn">Editar</a>
+                            <a href="product_list.php?delete_id=<?php echo htmlspecialchars($product['id']); ?>" onclick="return confirm('¿Estás seguro de que quieres eliminar este producto?');" class="btn delete">Eliminar</a>
                         </td>
                     </tr>
                 <?php endforeach; ?>

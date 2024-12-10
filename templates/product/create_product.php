@@ -35,28 +35,29 @@ if (isset($_POST['create'])) {
 <head>
     <meta charset="UTF-8">
     <title>Crear Producto</title>
+    <link rel="stylesheet" href="styles/styleproduct.css">
 </head>
 <body>
     <h1>Crear Producto</h1>
     <form method="POST" action="">
-        <div>
+        <div class="form-group">
             <label>Nombre</label>
             <input type="text" name="name" required />
         </div>
-        <div>
+        <div class="form-group">
             <label>Descripción</label>
             <textarea name="description" required></textarea>
         </div>
-        <div>
+        <div class="form-group">
             <label>Precio</label>
             <input type="number" name="price" required />
         </div>
-        <div>
+        <div class="form-group">
             <label>Stock</label>
             <input type="number" name="stock" required />
         </div>
-        <button type="submit" name="create">Crear Producto</button>
+        <button type="submit" name="create" class="btn">Crear Producto</button>
     </form>
-    <a href="product_list.php">Volver a la lista de productos</a>
+    <a href="product_list.php" class="btn">Volver a la lista de productos</a>
 </body>
 </html>

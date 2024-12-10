@@ -56,28 +56,29 @@ if (isset($_POST['update'])) {
 <head>
     <meta charset="UTF-8">
     <title>Editar Producto</title>
+    <link rel="stylesheet" href="styles/styleproduct.css">
 </head>
 <body>
     <h1>Editar Producto</h1>
     <form method="POST" action="">
-        <div>
+        <div class="form-group">
             <label>Nombre</label>
             <input type="text" name="name" value="<?php echo htmlspecialchars($product['name']); ?>" required />
         </div>
-        <div>
+        <div class="form-group">
             <label>Descripción</label>
             <textarea name="description" required><?php echo htmlspecialchars($product['description']); ?></textarea>
         </div>
-        <div>
+        <div class="form-group">
             <label>Precio</label>
             <input type="number" name="price" value="<?php echo htmlspecialchars($product['price']); ?>" required />
         </div>
-        <div>
+        <div class="form-group">
             <label>Stock</label>
             <input type="number" name="stock" value="<?php echo htmlspecialchars($product['stock']); ?>" required />
         </div>
-        <button type="submit" name="update">Actualizar Producto</button>
+        <button type="submit" name="update" class="btn">Actualizar Producto</button>
     </form>
-    <a href="product_list.php">Volver a la lista de productos</a>
+    <a href="product_list.php" class="btn">Volver a la lista de productos</a>
 </body>
 </html>

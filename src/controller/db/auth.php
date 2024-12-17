@@ -9,7 +9,7 @@ function isAuthenticated() {
 // Redirige al usuario al login si no está autenticado
 function requireAuth() {
     if (!isAuthenticated()) {
-        header('Location: ../../templates/forms/login.php');  // Redirige al login si no está autenticado
+        header('Location: ../../login.php');  // Redirige al login si no está autenticado
         exit();
     }
 }

@@ -9,7 +9,6 @@ if (isset($_POST['register'])) {
 
     // Verificar si el email ya está registrado
     $query = $connection->prepare("SELECT * FROM users WHERE EMAIL=:email");
-    echo "Hola";
     $query->bindParam("email", $email, PDO::PARAM_STR);
     $query->execute();
 
@@ -25,7 +24,7 @@ if (isset($_POST['register'])) {
             $result = $query->execute();
 
             if ($result) {
-                header('Location: ../../templates/forms/login.php');
+                header('Location: ../../index.php');
             } else {
                 echo '<p class="error">¡Algo fue mal al registrar el usuario!</p>';
             }

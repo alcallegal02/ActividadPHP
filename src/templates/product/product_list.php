@@ -9,7 +9,7 @@ header("Pragma: no-cache");
 // Verificar si el usuario está autenticado
 if (!isset($_SESSION['user_id'])) {
     // Redirige al login si no está autenticado
-    header('Location: ../templates/forms/login.php');
+    header('Location: ../../login.php');
     exit();  // No debe ejecutar más código después de la redirección
 }
 

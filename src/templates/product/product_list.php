@@ -44,6 +44,9 @@ $products = $query->fetchAll(PDO::FETCH_ASSOC);
     <link rel="stylesheet" href="styles/styleproduct.css">
 </head>
 <body>
+    <div class="top-right">
+        <a href="../../controller/forms/editprofile.php" class="btn">Editar Perfil</a>
+    </div>
     <h1>Lista de Productos</h1>
     <form method="POST" action="../../controller/forms/logout.php">
         <button type="submit">Cerrar sesión</button>

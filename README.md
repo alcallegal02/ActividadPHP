@@ -1,3 +1,39 @@
+# Pasos Explotación de vulnerabilidad Reflected XSS
+
+Iniciamos sesión con usuario prueba que es la víctima:
+
+![image](https://github.com/user-attachments/assets/60f41d0d-9fb3-45c1-886c-2903baee3f69)
+
+Ejecutamos el script en la barra de búsquedas para que mi servidor local capture la cookie de sesión para suplantar la identidad:
+
+![image](https://github.com/user-attachments/assets/0d5081cf-430c-4271-9166-8151e9bced0e)
+
+![image](https://github.com/user-attachments/assets/0e8090b3-5ff3-43fb-82e0-26f4e94578ec)
+
+
+Iniciamos sesión con el usuario que va a suplantar la identidad, en mi caso pepe:
+
+![image](https://github.com/user-attachments/assets/90276ba9-9ab0-4db3-8573-8f9edc73ad64)
+
+Nos crea una cookie de sesión correspondiente al usuario pepe:
+
+![image](https://github.com/user-attachments/assets/13974670-449c-42df-81d8-a060f85e06f7)
+
+Modificamos la cookie de pepe por la cookie de prueba anterior:
+
+![image](https://github.com/user-attachments/assets/8bcc4e75-85b4-4cc5-acfb-b00f2d6ef811)
+
+Y como vemos, nos habría cambiado el usuario al de prueba:
+
+![image](https://github.com/user-attachments/assets/a171ecc5-fd0e-4d1c-b7cb-f4d254b11f5c)
+
+De esta forma podremos suplantar la identidad de prueba en la aplicación.
+
+
+
+
+
+
 # Entorno LAMP Dockerizado con phpMyAdmin
 
 Este proyecto proporciona un entorno LAMP (Linux, Apache, MySQL, PHP) completamente dockerizado, junto con phpMyAdmin, para facilitar el desarrollo y despliegue de aplicaciones PHP.

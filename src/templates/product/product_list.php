@@ -30,8 +30,18 @@ if (isset($_GET['delete_id'])) {
     }
 }
 
-// Obtener la lista de productos
-$query = $connection->prepare("SELECT * FROM products ORDER BY created_at DESC");
+// Lógica de búsqueda
+$search_query = '';
+if (isset($_GET['q'])) {
+    $search_query = $_GET['q']; // No sanitizamos la entrada para hacerla vulnerable a XSS
+    $sql = "SELECT * FROM products WHERE name LIKE :search_query ORDER BY created_at DESC";
+    $query = $connection->prepare($sql);
+    $query->bindValue(':search_query', '%' . $search_query . '%', PDO::PARAM_STR);
+} else {
+    $sql = "SELECT * FROM products ORDER BY created_at DESC";
+    $query = $connection->prepare($sql);
+}
+
 $query->execute();
 $products = $query->fetchAll(PDO::FETCH_ASSOC);
 ?>
@@ -52,6 +62,13 @@ $products = $query->fetchAll(PDO::FETCH_ASSOC);
         <button type="submit">Cerrar sesión</button>
     </form>
     <a href="create_product.php" class="btn">Crear Nuevo Producto</a>
+
+    <!-- Barra de búsqueda -->
+    <form method="GET" action="product_list.php">
+        <input type="text" name="q" placeholder="Buscar productos..." value="<?php echo $search_query; ?>">
+        <button type="submit">Buscar</button>
+    </form>
+
     <table>
         <thead>
             <tr>

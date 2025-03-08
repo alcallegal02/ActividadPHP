@@ -1,6 +1,6 @@
 <?php
 include('../db/config.php');
-session_start();
+
 if (isset($_POST['register'])) {
     $username = $_POST['username'];
     $email = $_POST['email'];
@@ -24,7 +24,9 @@ if (isset($_POST['register'])) {
             $result = $query->execute();
 
             if ($result) {
+                // Redirigir al usuario sin iniciar sesión
                 header('Location: ../../index.php');
+                exit(); // Asegúrate de que el script se detenga después de la redirección
             } else {
                 echo '<p class="error">¡Algo fue mal al registrar el usuario!</p>';
             }

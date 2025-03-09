@@ -1,3 +1,30 @@
+# Robo cookies con servidor
+
+El proyecto tiene dos partes principales:
+
+Por un lado la web de la víctima, con un contenedor para la propia web, otro para la base de datos mysql y otro phpmyadmin para visualizar la base de datos.
+Por otro lado tenemos un servidor python para el atacante en un contenedor y a la vez que el clúster de la víctima tenemos dos contenedores para mysql y otro phpmyadmin para ver los datos. 
+En la base de datos del atacante se guardarán las cookies robadas de los usuarios gracias a que el servidor recibe un post proveniente de la página web desplegada de la víctima.
+Esta web tiene un script en el archivo product_list.php que roba la cookie de sesión cuando el usuario se loguea en ella.
+
+Vamos a ver un caso práctico para ver como funciona:
+
+![image](https://github.com/user-attachments/assets/345f87e3-d652-4c89-8305-7537c754714a)
+
+El usuario se loguea sin tener cookie aún
+
+Cuando el usuario se loguea se genera una cookie, pero en el momento en el que se carga la página, un div oculto hace un post al servidor con la cookie robada:
+
+![image](https://github.com/user-attachments/assets/1197ddf7-fb17-49a4-b5d6-7171b12942aa)
+
+El servidor lo recibe y con los datos que recibe de la cookie hace una inserción a su base de datos para guardarla:
+
+![image](https://github.com/user-attachments/assets/a337049d-df02-4991-897e-f7387a4d0a4b)
+
+![image](https://github.com/user-attachments/assets/98d1b2a1-de5b-42df-ae4d-771ad1f2fcab)
+
+
+
 # Pasos Explotación de vulnerabilidad Reflected XSS
 
 Iniciamos sesión con usuario prueba que es la víctima:

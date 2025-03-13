@@ -1,28 +1,8 @@
 <?php
-// Iniciar la sesión con configuraciones específicas
-session_start([
-    'cookie_lifetime' => 86400, // Duración de la cookie de sesión (1 día)
-    'cookie_httponly' => false, // Permite acceso a la cookie desde JavaScript
-    'cookie_secure' => false, // No requiere HTTPS para la cookie
-    'cookie_samesite' => 'Lax', // Restringe el envío de cookies en solicitudes entre sitios
-    'name' => 'PHPSESSID', // Nombre explícito de la cookie de sesión
-    'use_strict_mode' => true // Genera siempre una nueva ID de sesión para mayor seguridad
-]);
-
-// Desactivar el caché del navegador para evitar problemas con datos obsoletos
-header("Cache-Control: no-store, no-cache, must-revalidate, max-age=0");
-header("Cache-Control: post-check=0, pre-check=0", false);
-header("Pragma: no-cache");
-
-// Verificar si el usuario está autenticado
-if (!isset($_SESSION['user_id'])) {
-    // Redirige al login si no está autenticado
-    header('Location: ../../login.php');
-    exit(); // Detiene la ejecución del script después de la redirección
-}
-
 // Incluir la configuración de la base de datos
 include('../../controller/db/config.php');
+include('../../controller/auth/session_check.php');
+
 
 // Lógica de eliminación del producto
 if (isset($_GET['delete_id'])) {
@@ -92,10 +72,10 @@ $products = $query->fetchAll(PDO::FETCH_ASSOC); // Obtener todos los resultados 
 <!-- ===== FIN DEL FORMULARIO ===== -->
 
     <div class="top-right">
-        <a href="../../controller/forms/editprofile.php" class="btn">Editar Perfil</a> <!-- Botón para editar perfil -->
+        <a href="../auth/editprofile.php" class="btn">Editar Perfil</a> <!-- Botón para editar perfil -->
     </div>
     <h1>Lista de Productos</h1>
-    <form method="POST" action="../../controller/forms/logout.php" onsubmit="clearSessionStorage()">
+    <form method="POST" action="../../controller/auth/logout.php" onsubmit="clearSessionStorage()">
         <button type="submit">Cerrar sesión</button> <!-- Botón para cerrar sesión -->
     </form>
 

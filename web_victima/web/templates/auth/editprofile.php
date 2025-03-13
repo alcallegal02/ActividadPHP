@@ -1,11 +1,6 @@
 <?php
-include('../db/config.php');
-session_start();
-
-if (!isset($_SESSION['user_id'])) {
-    header("Location: login.php");
-    exit();
-}
+include('../../controller/db/config.php');
+include('../../controller/auth/session_check.php');
 
 $user_id = $_SESSION['user_id'];
 
@@ -79,7 +74,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Editar Perfil</title>
-    <link rel="stylesheet" href="../../templates/forms/styles/styleform.css">
+    <link rel="stylesheet" href="styles/styleform.css">
 </head>
 <body>
 
@@ -117,7 +112,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             <button type="submit">Actualizar</button>
         </form>
 
-        <p><a href="../../templates/product/product_list.php">Volver</a></p>
+        <p><a href="../product/product_list.php">Volver</a></p>
 
         <div class="message">
             <?php echo $message; ?>

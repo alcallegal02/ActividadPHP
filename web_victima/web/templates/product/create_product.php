@@ -1,11 +1,6 @@
 <?php
-session_start();
-if (!isset($_SESSION['user_id'])) {
-    header('Location: ../../index.php');
-    exit();
-}
-
 include('../../controller/db/config.php');
+include('../../controller/auth/session_check.php');
 
 // Verifica si se ha enviado el formulario
 if (isset($_POST['create'])) {

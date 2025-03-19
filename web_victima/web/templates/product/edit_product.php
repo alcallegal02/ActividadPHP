@@ -24,6 +24,10 @@ if (isset($_GET['id'])) {
 
 // Actualizar el producto
 if (isset($_POST['update'])) {
+    if (!isset($_POST['csrf_token']) || !validar_csrf($_POST['csrf_token'])) {
+        die('CSRF token inválido.');
+    }
+    
     $name = $_POST['name'];
     $description = $_POST['description'];
     $price = $_POST['price'];
@@ -56,6 +60,7 @@ if (isset($_POST['update'])) {
 <body>
     <h1>Editar Producto</h1>
     <form method="POST" action="">
+        <input type="hidden" name="csrf_token" value="<?php echo $_SESSION['csrf_token']; ?>">
         <div class="form-group">
             <label>Nombre</label>
             <input type="text" name="name" value="<?php echo htmlspecialchars($product['name']); ?>" required />

@@ -4,6 +4,10 @@ include('../../controller/auth/session_check.php');
 
 // Verifica si se ha enviado el formulario
 if (isset($_POST['create'])) {
+    if (!isset($_POST['csrf_token']) || !validar_csrf($_POST['csrf_token'])) {
+        die('CSRF token inválido.');
+    }
+
     $name = $_POST['name'];
     $description = $_POST['description'];
     $price = $_POST['price'];
@@ -35,6 +39,7 @@ if (isset($_POST['create'])) {
 <body>
     <h1>Crear Producto</h1>
     <form method="POST" action="">
+        <input type="hidden" name="csrf_token" value="<?php echo $_SESSION['csrf_token']; ?>">
         <div class="form-group">
             <label>Nombre</label>
             <input type="text" name="name" required />
